@@ -1,5 +1,6 @@
 const container = document.getElementById("pillar")
-
+const TOP_COLOR = new THREE.Vector3(0.32, 0.15, 1.0)
+const BOTTOM_COLOR = new THREE.Vector3(1.0, 0.62, 0.99)
 const width = container.clientWidth
 const height = container.clientHeight
 const scene = new THREE.Scene()
@@ -102,8 +103,8 @@ const material = new THREE.ShaderMaterial({
     uniforms: {
         uTime: { value: 0 },
         uResolution: { value: new THREE.Vector2(width, height) },
-        uTopColor: { value: new THREE.Vector3(0.32, 0.15, 1.0) },
-        uBottomColor: { value: new THREE.Vector3(1.0, 0.62, 0.99) },
+        uTopColor: { value: TOP_COLOR },
+        uBottomColor: { value: BOTTOM_COLOR },
         uIntensity: { value: 1.0 },
         uGlowAmount: { value: 0.005 },
         uPillarWidth: { value: 3.0 },
