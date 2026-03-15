@@ -1,4 +1,5 @@
 const container = document.getElementById("pillar")
+
 const width = container.clientWidth
 const height = container.clientHeight
 const scene = new THREE.Scene()
@@ -8,6 +9,7 @@ const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: false
 })
+
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setSize(width, height)
 container.appendChild(renderer.domElement)
@@ -81,6 +83,19 @@ void main()
     gl_FragColor = vec4(col*uIntensity,1.0);
 }
 `
+const resizeObserver = new ResizeObserver(entries => {
+    const width = container.clientWidth
+    const height = container.clientHeight
+    const canvas = renderer.domElement
+    const currentWidth = canvas.width
+    const currentHeight = canvas.height
+    if (width > currentWidth || height > currentHeight) {
+        renderer.setSize(width, height)
+        material.uniforms.uResolution.value.set(width, height)
+    }
+})
+
+resizeObserver.observe(container)
 const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
@@ -119,3 +134,4 @@ function animate() {
     requestAnimationFrame(animate)
 }
 animate()
+
