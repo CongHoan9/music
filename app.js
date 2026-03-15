@@ -99,25 +99,6 @@ function createFloatingHearts() {
     frame();
 }
 
-function animate() {
-    requestAnimationFrame(animate);
-    [scene1, scene2].forEach((ctx) => {
-        const { geometry, renderer, scene, camera } = ctx;
-        if (geometry) {
-            const time = performance.now() * 0.001;
-            const pos = geometry.attributes.position;
-            for (let i = 0; i < pos.count; i++) {
-                const x = pos.getX(i);
-                const y = pos.getY(i);
-                const distance = Math.sqrt(x * x + y * y);
-                const wave = 0.1 * Math.sin(time * 3 + distance * 2) * (1 / (1 + distance));
-                pos.setZ(i, wave);
-            }
-            pos.needsUpdate = true;
-            renderer.render(scene, camera);
-        }
-    });
-}
 
 function initAudio() {
     const listEl = document.getElementById("music-list");
