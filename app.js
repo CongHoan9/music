@@ -279,8 +279,6 @@ function initAudio() {
             localStorage.setItem("currentTrackIndex", index);
             localStorage.setItem("currentTrackTime", resumeTime);
             localStorage.setItem("currentLyricIndex", -1);
-            const bgDiv = document.getElementById("bg-blur");
-            bgDiv.style.backgroundImage = track.img ? `url(${track.img})` : "";
             try {
                 audio.currentTime = resumeTime;
                 if (!isNaN(audio.duration)) {
