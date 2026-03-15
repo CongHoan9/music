@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web love</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="image/icon.png" type="image/png">
+        <meta property="og:image" content="https://201012423tn.onrender.com/image/icon.png">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+    </head>
+    <body class="min-h-screen relative animated-gradient">
+        <div id="bg-blur" class="fixed inset-0 z-0"></div>
+        <canvas id="hearts-container" class="fixed w-full h-full inset-0 overflow-hidden pointer-events-none"></canvas>
+        <header class="sticky top-0 z-30  bg-white/30 border-b border-white/30">
+            <div class="mx-auto max-w-3xl px-5 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                   <h1 class="title font-black text-xl text-red-500">Music playlist</h1>
+                </div>
+                <a class="font-semibold text-white" href="https://www.tiktok.com/@hoan.naoh?is_from_webapp=1&sender_device=pc" target="_blank">@hoan.naoh</a>
+            </div>
+        </header>
+        <main class="relative space-y-3">
+            <section class="max-w-3xl mx-auto px-5 pt-5">
+                <div id="music-header" class="animated-gradient rounded-3xl p-5 grid grid-rows-[60px_1fr] grid-cols-[auto_1fr] sm:grid-cols-[200px_1fr] gap-3 sm:gap-5">
+                    <div class="rounded-xl bg-white/30 overflow-hidden aspect-square w-[60px] sm:w-full sm:row-span-2">
+                        <img id="music-image" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-rows-2 text-black">
+                        <div class="grid grid-cols-[1fr_auto] items-center gap-3 font-extrabold whitespace-nowrap">
+                            <span id="music-title" class="overflow-x-hidden text-lg sm:text-2xl"></span>
+                            <span id="music-duration" class="overflow-x-hidden text-sm"></span>
+                        </div>
+                        <span id="music-artist" class="overflow-x-hidden whitespace-nowrap opacity-70"></span>
+                    </div>
+                    <div id="lyric-container" class="lyric-container max-h-[120px] overflow-y-auto scrollbar-none col-span-2 sm:col-span-1">
+                        <div class="lyric-mask"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="max-w-3xl mx-auto px-5">
+                <div class="rounded-3xl overflow-hidden bg-white/30">
+                    <ul id="music-list" class="grid grid-cols-1 grid-rows-5 p-[86px_20px_0px_20px] m-[0px_0px_-34px_0px] h-[400px]"></ul>
+                </div>
+            </section>
+        </main>
+        <script defer src="app.js"></script>
+    </body>
+
+</html>
