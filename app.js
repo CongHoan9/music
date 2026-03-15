@@ -99,6 +99,29 @@ function createFloatingHearts() {
     frame();
 }
 
+async function preloadLyrics() {
+    await Promise.all(
+        CONFIG.musicList.map(async (track) => {
+            if (!track.lyric) return;
+
+            try {
+                const res = await fetch(track.lyric);
+                const raw = await res.json();
+
+                track.lyrics = raw
+                    .filter(line => line.time !== undefined && line.parts)
+                    .map(line => ({
+                        start: line.time,
+                        parts: line.parts
+                    }));
+            }
+            catch (e) {
+                console.warn("Không load được lyric:", e);
+                track.lyrics = [];
+            }
+        })
+    );
+}
 
 function initAudio() {
     const listEl = document.getElementById("music-list");
@@ -115,23 +138,8 @@ function initAudio() {
     function resetButtons() {
         document.querySelectorAll("#music-list button").forEach(b => b.innerHTML = iconPlay);
     }
-    async function loadLyric(track) {
-        if (track.lyrics) return track.lyrics;
-        const lyricsArr = [];
-        if (!track.lyric) return lyricsArr;
-        try {
-            const res = await fetch(track.lyric);
-            const raw = await res.json();
-            raw.forEach(line => {
-                if (line.time !== undefined && line.parts) {
-                    lyricsArr.push({ start: line.time, parts: line.parts });
-                }
-            });
-        } catch (e) {
-            console.warn("Không load được lyric:", e);
-        }
-        track.lyrics = lyricsArr;
-        return lyricsArr;
+    function loadLyric(track) {
+        return track.lyrics || []
     }
     let lastLyricIndex = -1;
     function updateLyric(audio, lyrics) {
@@ -218,6 +226,15 @@ function initAudio() {
             musicDuration.textContent = formatTime(remaining);
         }
     }
+    function renderLyrics(lyrics) {
+        lyricMask.innerHTML = lyrics.map(l =>
+            `<div class="text-sm opacity-70">
+            ${l.parts.map(p =>
+                `<span ${p.color ? `data-color="${p.color}"` : ""}>${p.text}</span>`
+            ).join("")}
+        </div>`
+        ).join("")
+    }
     async function playTrack(index, resumeTime = 0, shouldPlay = true) {
         return new Promise(async (resolve) => {
             const li = listEl.children[index];
@@ -235,21 +252,9 @@ function initAudio() {
             currentIndex = index;
             lastLyricIndex = -1;
             lyricMask.innerHTML = "";
-            const lyrics = await loadLyric(track);
+            const lyrics = loadLyric(track);
             if (lyrics.length > 0) {
-                lyrics.forEach(l => {
-                    const lineEl = document.createElement("div");
-                    lineEl.className = "text-sm opacity-70";
-                    l.parts.forEach(part => {
-                        const span = document.createElement("span");
-                        span.textContent = part.text;
-                        if (part.color) {
-                            span.setAttribute("data-color", part.color);
-                        }
-                        lineEl.appendChild(span);
-                    });
-                    lyricMask.appendChild(lineEl);
-                });
+                renderLyrics(lyrics);
             }
             if (musicTitle) musicTitle.textContent = track.title || "";
             if (musicArtist) musicArtist.textContent = track.artist || "";
@@ -320,36 +325,24 @@ function initAudio() {
     CONFIG.musicList.forEach((track, i) => {
         const li = document.createElement("li");
         li.setAttribute("tabindex", "0");
-        li.className = "p-3 h-[70px] bg-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,.10)] rounded-2xl transition relative hover:-translate-y-1 z-10 [&:hover~li]:translate-y-2 [&:focus~li]:translate - y - 3 -mt-[66px]";
-        const topWrap = document.createElement("div");
-        topWrap.className = "grid grid-cols-[auto_1fr_auto] gap-3 items-center";
-        const imgWrap = document.createElement("div");
-        imgWrap.className = "w-12 h-12 aspect-square rounded-md overflow-hidden";
-        const img = document.createElement("img");
-        img.src = track.img || "";
-        img.alt = track.title;
-        img.className = "object-cover aspect-square";
-        imgWrap.appendChild(img);
-        const textWrap = document.createElement("div");
-        textWrap.className = "grid grid-rows-[1fr_1fr] whitespace-nowrap";
-        const title = document.createElement("span");
-        title.textContent = track.title;
-        title.className = "font-semibold overflow-x-hidden";
-        const artist = document.createElement("span");
-        artist.textContent = track.artist || "";
-        artist.className = "text-sm opacity-70 overflow-x-hidden";
-        textWrap.appendChild(title);
-        textWrap.appendChild(artist);
-        const btn = document.createElement("button");
-        btn.innerHTML = iconPlay;
-        btn.className = "px-2 py-2 bg-rose-500 text-white rounded-full hover:bg-rose-500 flex items-center justify-center";
-        topWrap.appendChild(imgWrap);
-        topWrap.appendChild(textWrap);
-        topWrap.appendChild(btn);
-        const audioEl = document.createElement("audio");
-        audioEl.src = track.src;
-        li.appendChild(audioEl);
-        li.appendChild(topWrap);
+        li.className = "p-3 h-[70px] bg-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,.10)] rounded-2xl transition relative hover:-translate-y-1 z-10 [&:hover~li]:translate-y-2";
+        li.innerHTML = `
+            <div class="grid grid-cols-[auto_1fr_auto] gap-3 items-center">
+                <div class="w-12 h-12 aspect-square rounded-md overflow-hidden">
+                    <img src="${track.img || ""}" alt="${track.title}" class="object-cover aspect-square">
+                </div>
+                <div class="grid grid-rows-[1fr_1fr] whitespace-nowrap">
+                    <span class="font-semibold overflow-x-hidden">${track.title}</span>
+                    <span class="text-sm opacity-70 overflow-x-hidden">${track.artist || ""}</span>
+                </div>
+                <button class="px-2 py-2 bg-rose-500 text-white rounded-full flex items-center justify-center">
+                    ${iconPlay}
+                </button>
+            </div>
+            <audio src="${track.src}"></audio>
+        `;
+        const btn = li.querySelector("button");
+        const audioEl = li.querySelector("audio");
         listEl.appendChild(li);
         btn.addEventListener("click", () => {
             if (currentIndex === i) {
@@ -393,19 +386,7 @@ function initAudio() {
             .then(([lyrics]) => {
                 lyricMask.innerHTML = "";
                 if (lyrics.length > 0) {
-                    lyrics.forEach(l => {
-                        const lineEl = document.createElement("div");
-                        lineEl.className = "text-sm opacity-70";
-                        l.parts.forEach(part => {
-                            const span = document.createElement("span");
-                            span.textContent = part.text;
-                            if (part.color) {
-                                span.setAttribute("data-color", part.color);
-                            }
-                            lineEl.appendChild(span);
-                        });
-                        lyricMask.appendChild(lineEl);
-                    });
+                    renderLyrics(lyrics);
                 } else {
                     const placeholder = document.createElement("div");
                     placeholder.textContent = "Không có lời bài hát.";
@@ -433,10 +414,12 @@ function safeRun(fn, name) {
     catch (e) { console.error(`Error in ${name}:`, e); }
 }
 
-function boot() {
+async function boot() {
+    await preloadLyrics();
     safeRun(initAudio, "initAudio");
     safeRun(createFloatingHearts, "createFloatingHearts");
 }
+
 document.addEventListener("DOMContentLoaded", boot)
 gsap.registerPlugin(ScrollTrigger);
 document.querySelectorAll(".scroll-float").forEach(el => {
