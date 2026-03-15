@@ -453,12 +453,6 @@ function safeRun(fn, name) {
     catch (e) { console.error(`Error in ${name}:`, e); }
 }
 
-window.addEventListener("resize", () => {
-    const w = container.clientWidth
-    const h = container.clientHeight
-    renderer.setSize(w, h)
-    material.uniforms.uResolution.value.set(w, h)
-})
 function boot() {
     safeRun(initAudio, "initAudio");
     safeRun(createFloatingHearts, "createFloatingHearts");
