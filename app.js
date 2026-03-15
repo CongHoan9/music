@@ -441,9 +441,10 @@ function initAudio() {
                 const shouldPlay = savedIsPlaying === "true";
                 playTrack(currentIndex, savedTime ? parseFloat(savedTime) : 0, shouldPlay);
             });
-    }
+    } 
     else {
         playTrack(0, 0, true);
+
     }
 }
 
@@ -451,6 +452,7 @@ function safeRun(fn, name) {
     try { fn(); }
     catch (e) { console.error(`Error in ${name}:`, e); }
 }
+
 const container = document.getElementById("pillar")
 const width = container.clientWidth
 const height = container.clientHeight
@@ -476,26 +478,29 @@ void main()
 const fragmentShader = `
 precision highp float;
 uniform float uTime;
-uniform vec3 uTopColor;
-uniform float uRotCos;
-uniform float uRotSin;
-uniform float uRotCos;
-uniform float uRotSin;
-uniform float uWaveCos;
-uniform float uWaveSin;
 uniform vec2 uResolution;
-uniform float uIntensity;
+uniform vec3 uTopColor;
 uniform vec3 uBottomColor;
+uniform float uIntensity;
 uniform float uGlowAmount;
 uniform float uPillarWidth;
 uniform float uPillarHeight;
 uniform float uNoiseIntensity;
+uniform float uPillarRotCos;
+uniform float uPillarRotSin;
+uniform float uRotCos;
+uniform float uRotSin;
+uniform float uWaveCos;
+uniform float uWaveSin;
 varying vec2 vUv;
 const int MAX_ITER = 80;
 void main()
 {
     vec2 uv = (vUv*2.0-1.0) * vec2(uResolution.x/uResolution.y,1.0);
-    uv = vec2(uPillarRotCos * uv.x - uPillarRotSin * uv.y, uPillarRotSin * uv.x + uPillarRotCos * uv.y);
+    uv = vec2(
+    uPillarRotCos * uv.x - uPillarRotSin * uv.y,
+    uPillarRotSin * uv.x + uPillarRotCos * uv.y
+    );
     vec3 ro = vec3(0.0,0.0,-10.0);
     vec3 rd = normalize(vec3(uv,1.0));
     vec3 col = vec3(0.0);
@@ -531,12 +536,9 @@ void main()
     gl_FragColor = vec4(col*uIntensity,1.0);
 }
 `
-
 const material = new THREE.ShaderMaterial({
-
     vertexShader,
     fragmentShader,
-
     uniforms: {
         uTime: { value: 0 },
         uResolution: { value: new THREE.Vector2(width, height) },
@@ -559,49 +561,30 @@ const material = new THREE.ShaderMaterial({
     depthTest: false
 
 })
-
 const geometry = new THREE.PlaneGeometry(2, 2)
-
 const mesh = new THREE.Mesh(geometry, material)
-
 scene.add(mesh)
-
 let time = 0
-
 function animate() {
-
     time += 0.016
-
     material.uniforms.uTime.value = time
-
     material.uniforms.uRotCos.value = Math.cos(time * 0.3)
     material.uniforms.uRotSin.value = Math.sin(time * 0.3)
-
     renderer.render(scene, camera)
-
     requestAnimationFrame(animate)
-
 }
-
 animate()
-
 window.addEventListener("resize", () => {
-
     const w = container.clientWidth
     const h = container.clientHeight
-
     renderer.setSize(w, h)
-
     material.uniforms.uResolution.value.set(w, h)
-
 })
-
 function boot() {
     safeRun(initAudio, "initAudio");
     safeRun(createFloatingHearts, "createFloatingHearts");
 }
 document.addEventListener("DOMContentLoaded", boot)
-
 gsap.registerPlugin(ScrollTrigger);
 document.querySelectorAll(".scroll-float").forEach(el => {
     const text = el.textContent.trim();
