@@ -476,23 +476,26 @@ void main()
 const fragmentShader = `
 precision highp float;
 uniform float uTime;
-uniform vec2 uResolution;
 uniform vec3 uTopColor;
-uniform vec3 uBottomColor;
-uniform float uIntensity;
-uniform float uGlowAmount;
-uniform float uPillarWidth;
-uniform float uPillarHeight;
-uniform float uNoiseIntensity;
+uniform float uRotCos;
+uniform float uRotSin;
 uniform float uRotCos;
 uniform float uRotSin;
 uniform float uWaveCos;
 uniform float uWaveSin;
+uniform vec2 uResolution;
+uniform float uIntensity;
+uniform vec3 uBottomColor;
+uniform float uGlowAmount;
+uniform float uPillarWidth;
+uniform float uPillarHeight;
+uniform float uNoiseIntensity;
 varying vec2 vUv;
 const int MAX_ITER = 80;
 void main()
 {
     vec2 uv = (vUv*2.0-1.0) * vec2(uResolution.x/uResolution.y,1.0);
+    uv = vec2(uPillarRotCos * uv.x - uPillarRotSin * uv.y, uPillarRotSin * uv.x + uPillarRotCos * uv.y);
     vec3 ro = vec3(0.0,0.0,-10.0);
     vec3 rd = normalize(vec3(uv,1.0));
     vec3 col = vec3(0.0);
