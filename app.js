@@ -442,6 +442,9 @@ function initAudio() {
                 playTrack(currentIndex, savedTime ? parseFloat(savedTime) : 0, shouldPlay);
             });
     }
+    else {
+        playTrack(0, 0, true);
+    }
 }
 
 function safeRun(fn, name) {
