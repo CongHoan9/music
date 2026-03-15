@@ -177,5 +177,5 @@ new ElectricBorder("#music-header", {
     speed: 1,
     chaos: 0.0000001,
     borderRadius: 25,
-    thickness: 2
+    thickness: 1
 })
