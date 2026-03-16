@@ -171,7 +171,7 @@ function initAudio() {
                     el.classList.remove("text-base", "font-bold", "opacity-100");
                     spans.forEach(span => {
                         span.classList.add("text-sm", "opacity-70");
-                        span.classList.remove("text-base", "font-bold", "opacity-100", "bg-white/30", "px-1", "pb-[1px]", "rounded");
+                        span.classList.remove("text-base", "font-bold", "opacity-100", "bg-white", "px-1", "pb-[1px]", "rounded");
                         span.style.color = '';
                     });
                 }
