@@ -41,7 +41,7 @@ vec4 renderImage(vec2 uvCoord){
     }
     vec2 diff = (uvCoord - uMouse);
     float dist = length(diff);
-    float falloff = exp(-dist*6.0);
+    float falloff = exp(-dist*5.0);
     float ripple = sin(10.0*dist - uTime*2.0) * 0.3;
     uv += (diff/(dist+0.0001))*ripple*falloff;
     vec3 color = uBaseColor / abs(sin(uTime - uv.y - uv.x));
@@ -114,8 +114,8 @@ function touchMove(e) {
     mouse[1] = y
 }
 if (interactive) {
-    container.addEventListener("mousemove", mouseMove)
-    container.addEventListener("touchmove", touchMove)
+    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("touchmove", touchMove, { passive: true })
 }
 function update(t) {
     requestAnimationFrame(update)
@@ -124,3 +124,4 @@ function update(t) {
 }
 requestAnimationFrame(update)
 container.appendChild(gl.canvas)
+
