@@ -1,0 +1,3 @@
+<div id="lightning-container" class="fixed inset-0 z-0">
+    <canvas id="lightning"></canvas>
+</div>
