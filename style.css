@@ -181,3 +181,10 @@ body {
     opacity: 0.3;
     background: linear-gradient(-30deg, var(--electric-light-color), transparent, var(--electric-border-color));
 }
+
+
+
+.liquidChrome-container {
+    width: 100%;
+    height: 100%;
+}

@@ -165,7 +165,7 @@ function initAudio() {
                             span.style.color = span.dataset.color;
                         }
                     });
-                } 
+                }
                 else {
                     el.classList.add("text-sm", "opacity-70");
                     el.classList.remove("text-base", "font-bold", "opacity-100");
@@ -403,7 +403,7 @@ function initAudio() {
                 const shouldPlay = savedIsPlaying === "true";
                 playTrack(currentIndex, savedTime ? parseFloat(savedTime) : 0, shouldPlay);
             });
-    } 
+    }
     else {
         playTrack(0, 0, true);
 
