@@ -161,7 +161,7 @@ function initAudio() {
                         span.classList.add("text-base", "font-bold", "opacity-100");
                         span.classList.remove("text-sm", "opacity-70");
                         if (span.dataset.color) {
-                            span.classList.add("bg-white/30", "px-1", "pb-[1px]", "rounded");
+                            span.classList.add("bg-white", "px-1", "pb-[1px]", "rounded");
                             span.style.color = span.dataset.color;
                         }
                     });
