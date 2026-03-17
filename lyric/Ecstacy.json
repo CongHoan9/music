@@ -12,8 +12,12 @@
     "time": 10100,
     "parts": [
       {
-        "text": "I just wanna be your sweetheart",
+        "text": "I just wanna be your ",
         "color": null
+      },
+      {
+        "text": "sweetheart",
+        "color": "#f43f5e"
       }
     ]
   }, 
@@ -21,8 +25,12 @@
     "time": 14000,
     "parts": [
       {
-        "text": "Fucking come here",
+        "text": "Fucking ",
         "color": null
+      },
+      {
+        "text": "come here",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -30,8 +38,12 @@
     "time": 16200,
     "parts": [
       {
-        "text": "Give me your heart",
+        "text": "Give me ",
         "color": null
+      },
+      {
+        "text": "your heart",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -41,6 +53,18 @@
       {
         "text": "Just you and me",
         "color": null
+      },
+      {
+        "text": "you",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " and ",
+        "color": null
+      },
+      {
+        "text": "me",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -49,7 +73,7 @@
     "parts": [
       {
         "text": "To infinity",
-        "color": null
+        "color": "#f43f5e"
       }
     ]
   },
@@ -66,8 +90,12 @@
     "time": 25200,
     "parts": [
       {
-        "text": "Too much ecstasy",
+        "text": "Too much ",
         "color": null
+      },
+      {
+        "text": "ecstasy",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -75,7 +103,11 @@
     "time": 28200,
     "parts": [
       {
-        "text": "Kiss me on the lips",
+        "text": "Kiss",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " me on the lips",
         "color": null
       }
     ]
@@ -120,7 +152,19 @@
     "time": 38800,
     "parts": [
       {
-        "text": "Come and play with me",
+        "text": "Come",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " and  with me",
+        "color": null
+      },
+      {
+        "text": "play",
+        "color": "#f43f5e"
+      },
+      {
+        "text": "with me",
         "color": null
       }
     ]
@@ -165,8 +209,12 @@
     "time": 50150,
     "parts": [
       {
-        "text": "You're so crazy",
+        "text": "You're so ",
         "color": null
+      },
+      {
+        "text": "crazy",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -174,7 +222,11 @@
     "time": 52000,
     "parts": [
       {
-        "text": "Manipulate me",
+        "text": "Manipulate",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " me",
         "color": null
       }
     ]
@@ -183,7 +235,15 @@
     "time": 54600,
     "parts": [
       {
-        "text": "Fucking chase me",
+        "text": "Fucking ",
+        "color": null
+      },
+      {
+        "text": "chase",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " me",
         "color": null
       }
     ]
@@ -192,7 +252,15 @@
     "time": 56900,
     "parts": [
       {
-        "text": "Fucking break me",
+        "text": "Fucking ",
+        "color": null
+      },
+      {
+        "text": "break",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " me",
         "color": null
       }
     ]
@@ -201,8 +269,12 @@
     "time": 59100,
     "parts": [
       {
-        "text": "You're my everything",
+        "text": "You're my ",
         "color": null
+      },
+      {
+        "text": "everything",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -219,8 +291,12 @@
     "time": 64200,
     "parts": [
       {
-        "text": "I just wanna be your sweetheart",
+        "text": "I just wanna be your ",
         "color": null
+      },
+      {
+        "text": "sweetheart",
+        "color": "#f43f5e"
       }
     ]
   }, 
@@ -228,8 +304,12 @@
     "time": 68100,
     "parts": [
       {
-        "text": "Fucking come here",
+        "text": "Fucking ",
         "color": null
+      },
+      {
+        "text": "come here",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -237,8 +317,12 @@
     "time": 70300,
     "parts": [
       {
-        "text": "Give me your heart",
+        "text": "Give me ",
         "color": null
+      },
+      {
+        "text": "your heart",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -246,8 +330,20 @@
     "time": 72700,
     "parts": [
       {
-        "text": "Just you and me",
+        "text": "Just ",
         "color": null
+      },
+      {
+        "text": "you",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " and ",
+        "color": "#f43f5e"
+      },
+      {
+        "text": "me",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -255,8 +351,12 @@
     "time": 74900,
     "parts": [
       {
-        "text": "To infinity",
+        "text": "To ",
         "color": null
+      },
+      {
+        "text": "infinity",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -273,8 +373,12 @@
     "time": 79400,
     "parts": [
       {
-        "text": "Too much ecstasy",
+        "text": "Too much ",
         "color": null
+      },
+      {
+        "text": "ecstasy",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -282,8 +386,12 @@
     "time": 82250,
     "parts": [
       {
-        "text": "Piercing on your lip it's perfect",
+        "text": "Piercing on your lip ",
         "color": null
+      },
+      {
+        "text": "it's perfect",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -291,8 +399,12 @@
     "time": 86250,
     "parts": [
       {
-        "text": "Never seen another girl this perfect",
+        "text": "Never seen another ",
         "color": null
+      },
+      {
+        "text": "girl this perfect",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -300,7 +412,15 @@
     "time": 91250,
     "parts": [
       {
-        "text": "Sticking out your tongue for the picture",
+        "text": "Sticking out your ",
+        "color": null
+      },
+      {
+        "text": "tongue",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " for the picture",
         "color": null
       }
     ]
@@ -309,8 +429,12 @@
     "time": 95200,
     "parts": [
       {
-        "text": "You're so pretty",
+        "text": "You're so ",
         "color": null
+      },
+      {
+        "text": "pretty",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -318,8 +442,12 @@
     "time": 97500,
     "parts": [
       {
-        "text": "You're so popular",
+        "text": "You're so ",
         "color": null
+      },
+      {
+        "text": "popular",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -327,8 +455,12 @@
     "time": 100300,
     "parts": [
       {
-        "text": "I just wanna be your sweetheart",
+        "text": "I just wanna be your ",
         "color": null
+      },
+      {
+        "text": "sweetheart",
+        "color": "#f43f5e"
       }
     ]
   }, 
@@ -336,8 +468,12 @@
     "time": 104200,
     "parts": [
       {
-        "text": "Fucking come here",
+        "text": "Fucking ",
         "color": null
+      },
+      {
+        "text": "come here",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -345,8 +481,12 @@
     "time": 106400,
     "parts": [
       {
-        "text": "Give me your heart",
+        "text": "Give me ",
         "color": null
+      },
+      {
+        "text": "your heart",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -354,8 +494,20 @@
     "time": 108800,
     "parts": [
       {
-        "text": "Just you and me",
+        "text": "Just ",
         "color": null
+      },
+      {
+        "text": "you",
+        "color": "#f43f5e"
+      },
+      {
+        "text": " and ",
+        "color": "#f43f5e"
+      },
+      {
+        "text": "me",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -363,8 +515,12 @@
     "time": 110900,
     "parts": [
       {
-        "text": "To infinity",
+        "text": "To ",
         "color": null
+      },
+      {
+        "text": "infinity",
+        "color": "#f43f5e"
       }
     ]
   },
@@ -381,8 +537,12 @@
     "time": 115500,
     "parts": [
       {
-        "text": "Too much ecstasy",
+        "text": "Too much ",
         "color": null
+      },
+      {
+        "text": "ecstasy",
+        "color": "#f43f5e"
       }
     ]
   },
