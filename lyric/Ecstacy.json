@@ -51,7 +51,7 @@
     "time": 18600,
     "parts": [
       {
-        "text": "Just you and me",
+        "text": "Just ",
         "color": null
       },
       {
@@ -339,7 +339,7 @@
       },
       {
         "text": " and ",
-        "color": "#f43f5e"
+        "color": null
       },
       {
         "text": "me",
@@ -503,7 +503,7 @@
       },
       {
         "text": " and ",
-        "color": "#f43f5e"
+        "color": null
       },
       {
         "text": "me",
