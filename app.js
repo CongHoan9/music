@@ -259,8 +259,7 @@ function initAudio() {
     listEl.innerHTML = ""
     CONFIG.musicList.forEach((track, i) => {
         const li = document.createElement("li")
-        li.className =
-            "p-3 h-[70px] bg-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,.10)] rounded-2xl transition relative hover:-translate-y-1 z-10 [&:hover~li]:translate-y-2"
+        li.className = "p-3 h-[70px] bg-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,.10)] rounded-2xl transition relative hover:-translate-y-1 z-10 [&:hover~li]:translate-y-2"
         li.innerHTML = `
         <div class="grid grid-cols-[auto_1fr_auto] gap-3 items-center">
             <div class="w-12 h-12 rounded-md overflow-hidden">
