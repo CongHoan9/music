@@ -266,7 +266,7 @@ function initAudio() {
             <div class="w-12 h-12 rounded-md overflow-hidden">
                 <img src="${track.img || ""}" class="object-cover w-full h-full">
             </div>
-            <div class="grid grid-rows-[1fr_1fr]">
+            <div class="grid grid-rows-[1fr_1fr] whitespace-nowrap">
                 <span class="font-semibold">${track.title}</span>
                 <span class="text-sm opacity-70">${track.artist || ""}</span>
             </div>
