@@ -41,8 +41,8 @@ vec4 renderImage(vec2 uvCoord){
     }
     vec2 diff = (uvCoord - uMouse);
     float dist = length(diff);
-    float falloff = exp(-dist*5.0);
-    float ripple = sin(10.0*dist - uTime*2.0) * 0.3;
+    float falloff = exp(-dist*20.0);
+    float ripple = sin(10.0*dist - uTime*2.0) * 0.03;
     uv += (diff/(dist+0.0001))*ripple*falloff;
     vec3 color = uBaseColor / abs(sin(uTime - uv.y - uv.x));
     return vec4(color,1.0);
